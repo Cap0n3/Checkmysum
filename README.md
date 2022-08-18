@@ -1,17 +1,20 @@
 # CheckMySum
 
 Script to easily compare checksums of files on Linux and MacOS. 
-It can compare checksums for these algorithms :
+
+It generates a hash with given file for these algorithms :
 - md5
 - sha1
 - sha256
 - sha512
 
+And then it automatically compare generated hash with given third-party hash.
+
 ## Usage
 
 1. Download script & give it proper autorizations.
 2. Lauch script.
-3. Enter hash given by third party when prompt.
+3. Enter hash given by third-party when prompt.
 4. That's it !
 
 ## Syntax
