@@ -8,7 +8,7 @@ It generates a hash with given file for these algorithms :
 - sha256
 - sha512
 
-And then it automatically compare generated hash with given third-party hash.
+And then automatically compare generated hash with given third-party hash.
 
 ## Usage
 
