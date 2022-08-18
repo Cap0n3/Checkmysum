@@ -1,6 +1,6 @@
 # CheckMySum
 
-Script to easily compare files checksums on Linux and MacOS terminal. 
+Script to easily verify file checksum on Linux and MacOS terminal. 
 
 It generates a hash with given file for these algorithms :
 - md5
@@ -8,7 +8,7 @@ It generates a hash with given file for these algorithms :
 - sha256
 - sha512
 
-And then automatically compare generated hash with given third-party hash.
+And then automatically compare generated hash with given third-party hash and output result.
 
 ## Usage
 
