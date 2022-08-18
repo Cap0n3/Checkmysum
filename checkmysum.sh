@@ -25,6 +25,7 @@ FILE_PATH=$2
 # ========= CHECKS ========= #
 # ========================== #
 
+
 # Check if arguments where correcly passed
 if [ "$ALGO" == "" ] || [ "$FILE_PATH" == "" ]
 then
@@ -48,14 +49,14 @@ then
     exit 1
 fi
 
-# ============================= #
-# ========= FUNCTIONS ========= #
-# ============================= #
+# ===================================== #
+# ========= UTILITY FUNCTIONS ========= #
+# ===================================== #
 
 ### FUNCTION BEGIN ###
-# Function that returns OS type.
+# Utility function that returns OS type.
 # OUTPUTS: 
-# 	Writes String to STDOUT
+# 	Writes String to STDOUT (solaris, macOS, linux, bsd, windows)
 ### FUNCTION END ###
 function getOS() {
 	local os_name
@@ -65,7 +66,7 @@ function getOS() {
 			echo $os_name
 		;;
 		darwin*)
-			os_name="macOs"
+			os_name="macOS"
 			echo $os_name
 		;;
 		linux*)
@@ -82,6 +83,10 @@ function getOS() {
 		;;
 	esac
 }
+
+# ===================================== #
+# ========= PROGRAM FUNCTIONS ========= #
+# ===================================== #
 
 ### FUNCTION BEGIN ###
 # Execute command to get hash checksum (on Linux machines)
@@ -172,7 +177,7 @@ os_type=$(getOS)
 if [ "$os_type" == "linux" ]
 then
     hash_to_check=$(getHashLinux)
-elif [ "$os_type" == "darwin" ]
+elif [ "$os_type" == "macOS" ]
 then
     # Check if module shasum is installed
     shasum_check=$(which shasum) 
