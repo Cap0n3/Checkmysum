@@ -2,7 +2,7 @@
 
 #######################################################################
 # Description : Script to easily compare checksums on Linux and Mac OS.
-# Usage : ./Checksum.sh <Algorithm> <PathToFile>
+# Usage : ./checkmysum.sh <Algorithm> <PathToFile>
 # Author : Alexandre Guillin
 #######################################################################
 
@@ -134,7 +134,7 @@ OS_TYPE=$(getOS)
 # Check if arguments where correcly passed
 if [ "$ALGO" == "" ] || [ "$FILE_PATH" == "" ]
 then
-    echo -e $CYAN"Usage : ./Checksum.sh <Algorithm> <PathToFile>"$NC
+    echo -e $CYAN"Usage : ./checkmysum.sh <Algorithm> <PathToFile>"$NC
     exit 1
 fi
 
