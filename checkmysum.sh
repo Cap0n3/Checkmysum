@@ -21,34 +21,6 @@ NC='\e[0m' # No Color
 ALGO=$1
 FILE_PATH=$2
 
-# ========================== #
-# ========= CHECKS ========= #
-# ========================== #
-
-
-# Check if arguments where correcly passed
-if [ "$ALGO" == "" ] || [ "$FILE_PATH" == "" ]
-then
-    echo -e $CYAN"Usage : ./Checksum.sh <Algorithm> <PathToFile>"$NC
-    exit 1
-fi
-
-# Check if choosen algorithm is correct
-valid_algos=("md5" "sha1" "sha256" "sha512")
-if [[ ! " ${valid_algos[*]} " =~ " ${ALGO} " ]]
-then
-    # whatever you want to do when array doesn't contain value
-    echo -e $RED"Choosen algorithm is not valid !\nPlease choose md5, sha1, sha256 or sha512."$NC
-    exit 1
-fi
-
-# Check if file exists
-if [ ! -f "$FILE_PATH" ]
-then
-    echo -e $RED"File not found ! Please check file path."$NC
-    exit 1
-fi
-
 # ===================================== #
 # ========= UTILITY FUNCTIONS ========= #
 # ===================================== #
@@ -164,6 +136,60 @@ function getHashMac() {
     echo $hash
 }
 
+# ================================== #
+# ========= INITS & CHECKS ========= #
+# ================================== #
+
+# Get OS of user machine
+OS_TYPE=$(getOS)
+
+# Check if arguments where correcly passed
+if [ "$ALGO" == "" ] || [ "$FILE_PATH" == "" ]
+then
+    echo -e $CYAN"Usage : ./Checksum.sh <Algorithm> <PathToFile>"$NC
+    exit 1
+fi
+
+# Check if choosen algorithm is correct
+valid_algos=("md5" "sha1" "sha256" "sha512")
+if [[ ! " ${valid_algos[*]} " =~ " ${ALGO} " ]]
+then
+    # whatever you want to do when array doesn't contain value
+    echo -e $RED"Choosen algorithm is not valid !\nPlease choose md5, sha1, sha256 or sha512."$NC
+    exit 1
+fi
+
+# Check if file exists
+if [ ! -f "$FILE_PATH" ]
+then
+    echo -e $RED"File not found ! Please check file path."$NC
+    exit 1
+fi
+
+# Define ANSI Colors (color codes can vary between macos and linux bash version because of escape char)
+# Get escape character
+if [ "$OS_TYPE" == "linux" ]
+then
+    esc_char="\e"
+elif [ "$OS_TYPE" == "macOS" ]
+then
+    esc_char="\033"
+else
+    echo "This script only runs on Linux and MacOS !"
+    exit 1
+fi
+
+# ANSI codes
+red="$esc_char[0;31m"
+redhl="$esc_char[0;31;7m"
+RED="$esc_char[1;31m"
+blue="$esc_char[0;34m"
+BLUE="$esc_char[1;34m"
+cyan="$esc_char[0;36m"
+CYAN="$esc_char[1;36m"
+GREEN="$esc_char[0;92m"
+NC="$esc_char[0m" # No Color
+
 # ==================================== #
 # ========= START OF PROGRAM ========= #
 # ==================================== #
@@ -173,11 +199,11 @@ echo -e "[*] Generating hash ..."
 
 # === Get OS and execute right commands === #
 
-os_type=$(getOS)
-if [ "$os_type" == "linux" ]
+
+if [ "$OS_TYPE" == "linux" ]
 then
     hash_to_check=$(getHashLinux)
-elif [ "$os_type" == "macOS" ]
+elif [ "$OS_TYPE" == "macOS" ]
 then
     # Check if module shasum is installed
     shasum_check=$(which shasum) 
