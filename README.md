@@ -22,6 +22,7 @@ And then automatically compare generated hash with given third-party hash.
 ```console
 $ ./checkmysum <algorithm> <path_to_file>
 ```
+> **Note :** simply replace `<algorithm>` with `md5`, `sha1`, `sha256` or `sha512`
 
 For instance :
 
