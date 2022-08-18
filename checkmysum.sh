@@ -6,10 +6,6 @@
 # Author : Alexandre Guillin
 #######################################################################
 
-# Get command arguments
-ALGO=$1
-FILE_PATH=$2
-
 # ===================================== #
 # ========= UTILITY FUNCTIONS ========= #
 # ===================================== #
@@ -128,6 +124,9 @@ function getHashMac() {
 # ================================== #
 # ========= INITS & CHECKS ========= #
 # ================================== #
+# Get command arguments
+ALGO=$1
+FILE_PATH=$2
 
 # Get OS of user machine
 OS_TYPE=$(getOS)
