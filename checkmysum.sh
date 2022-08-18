@@ -6,17 +6,6 @@
 # Author : Alexandre Guillin
 #######################################################################
 
-# Define a few colors 
-red='\e[0;31m'
-redhl='\e[0;31;7m'
-RED='\e[1;31m'
-blue='\e[0;34m'
-BLUE='\e[1;34m'
-cyan='\e[0;36m'
-CYAN='\e[1;36m'
-GREEN='\e[0;92m'
-NC='\e[0m' # No Color
-
 # Get command arguments
 ALGO=$1
 FILE_PATH=$2
